@@ -1,0 +1,18 @@
+language: cpp
+compiler: g++
+sudo: require
+dist: trusty
+
+before_install:
+  - sudo add-apt-repository ppa:beineri/opt-qt-5.10.1-trusty -y
+  - sudo apt-get update -qq
+
+install:
+  - sudo apt-get install -y qt510base
+  - source /opt/qt510/bin/qt510-env.sh
+
+script:
+- cd qt
+- qmake CONFIG+=release PREFIX=/usr
+- make
+- sudo make install

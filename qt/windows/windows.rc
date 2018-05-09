@@ -1,0 +1,8 @@
+// D'après: https://msdn.microsoft.com/en-us/library/ms997538.aspx
+// et https://msdn.microsoft.com/en-us/library/mt186350.aspx
+// convert medocs.png +dither -colors 16 -resize 16x16 medocs16x16.ico
+
+IDI_ICON1	ICON	DISCARDABLE	"medocs256x256.png"
+IDI_ICON2	ICON	DISCARDABLE	"medocs48x48.ico"
+IDI_ICON3	ICON	DISCARDABLE	"medocs32x32.ico"
+IDI_ICON4	ICON	DISCARDABLE	"medocs16x16.ico"

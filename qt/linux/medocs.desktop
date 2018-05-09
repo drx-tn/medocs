@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.1.1
+Terminal=false
+NoDisplay=false
+Name=Médocs
+Comment=Application base de données des médicaments en Tunisie
+Exec=/opt/medocs/medocs
+Icon=/usr/share/pixmaps/medocs.png
+Type=Application
+Categories=Education;Science;
