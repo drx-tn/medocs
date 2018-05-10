@@ -1,0 +1,2 @@
+SUBDIRS += qt
+TEMPLATE = subdirs

@@ -1,9 +1,12 @@
 /*
 !/.gitignore
 !/.travis.yml
+!/.appveyor.yml
 !/README.md
 !/CONTRIBUTING.md
 !/LICENSE
+!/medocs.pro
+!/medocs.nsi
 !/base
 /base/*
 !/base/dpm.db
@@ -17,7 +20,7 @@
 !/qt/mainwindow.cpp
 !/qt/mainwindow.h
 !/qt/mainwindow.ui
-!/qt/medocs.pro
+!/qt/qt.pro
 !/qt/medocs.qrc
 !/qt/windows
 /qt/windows/*
