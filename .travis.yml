@@ -3,16 +3,47 @@ compiler: g++
 sudo: require
 dist: trusty
 
+env:
+  global:
+    - UBUNTU_VERSION: trusty
+    - QT_VERSION: 5.10.1
+    - QT_BASE: 510
+  matrix:
+    - ARCH: amd64
+    - ARCH: i386
+
 before_install:
-  - sudo add-apt-repository ppa:beineri/opt-qt-5.10.1-trusty -y
-  - sudo apt-get update -qq
+- sudo apt-get update -qq
+- sudo apt-get install sbuild debootstrap -qq
+- sudo rm -rf /etc/sbuild/chroot/*-sbuild /etc/schroot/chroot.d/*-sbuild*
 
 install:
-  - sudo apt-get install -y qt510base
-  - source /opt/qt510/bin/qt510-env.sh
+- sudo debootstrap --foreign --no-check-gpg --arch=${ARCH} ${UBUNTU_VERSION} /tmp/medocs_build http://archive.ubuntu.com/ubuntu
+- sudo chroot /tmp/medocs_build ./debootstrap/debootstrap --second-stage
+- sudo sbuild-createchroot --arch=${ARCH} --foreign --setup-only ${UBUNTU_VERSION} /tmp/medocs_build http://archive.ubuntu.com/ubuntu
+- sudo chroot /tmp/medocs_build apt-get update -qq
+- sudo chroot /tmp/medocs_build apt-get install software-properties-common -qq
+- sudo chroot /tmp/medocs_build add-apt-repository ppa:beineri/opt-qt-${QT_VERSION}-${UBUNTU_VERSION} -qq
+- sudo chroot /tmp/medocs_build add-apt-repository universe -qq
+- sudo chroot /tmp/medocs_build apt-get update -qq
+- sudo chroot /tmp/medocs_build apt-get install qt${QT_BASE}base checkinstall libx11-xcb-dev libglu1-mesa-dev -qq
+- sudo mkdir -p /tmp/medocs_build/${TRAVIS_BUILD_DIR}
+- sudo rsync -av ${TRAVIS_BUILD_DIR}/ /tmp/medocs_build/${TRAVIS_BUILD_DIR}
 
 script:
-- cd qt
-- qmake CONFIG+=release PREFIX=/usr
-- make
-- sudo make install
+- sudo chroot /tmp/medocs_build /bin/bash -c "source /opt/qt510/bin/qt510-env.sh && cd ${TRAVIS_BUILD_DIR} && qmake -config release && make && cat >description-pak <<EOF && checkinstall --install=no --maintainer=\"39054543+drxtun@users.noreply.github.com\" --arch=${ARCH} --type=debian --pkgname=medocs --pkgversion=0.1.1 --pkgrelease=0.1.1 --pkglicense=\"GPL3\" --pkggroup=education --pkgsource=https://github.com/drxtun/medocs --requires=libqt5widgets5,libqt5gui5,libqt5sql5,libqt5core5a --provides=medocs --nodoc -d 0 --default
+Application base de données des médicaments en Tunisie
+
+Cette application permet au grand public et aux professionnels de santé d'accéder à des données sur les médicaments commercialisés ou ayant l'autorisation de mise sur le marché tunisien. C'est une application gratuite et son coude source est ouvert. (En savoir plus sur le projet: https://drxtun.github.io | Rapporter des bugs ou des erreurs: https://github.com/drxtun/medocs/issues)
+EOF"
+- rsync -av /tmp/medocs_build/${TRAVIS_BUILD_DIR}/ ${TRAVIS_BUILD_DIR}
+
+deploy:
+  provider: releases
+  api_key:
+    secure: FIzhT6uHRnn4aOIoclP8hD2Kseb6/LqNZzXATKOwtSBHEMJldQ2/irzzWQ6aDdyUml++cZrPNk/kR+61CpZQp7Qi+O132Q1KbxY35X3XeECxeMy8N7c2Mcorfr46lT7Z3VASf22o/nUz8VJtQqk8agPHBjQAHMrm/B2Lfd5gYt4V2MB0hbdOLa8AduZoGVmuJf4jyG6mIM1g0qeUeteRE/bGHqZEZJVEFj158urgACd7lEe7FRX5jVRh4J929Lbfso3kLmJl+lbTeQuduasiaJAUHGfWiAfuFe2Yq4RuzQrR3DBFevZlG8zYr6RNkfHAcCO5kxFYqTZ9l5BDnJoSXu3EjgVBZZbXPZj8qVfseKpWDcxIHRtAoNt73ZQtymEb4tGklVClePHMWc4U9dTwbWlNonWCk9bueaFWgjUqyknmWtcw/++/BNcVmn0OsDpy6R2I7DUmCUWQ4Ooyoqg1irzqkUcJ82RloZuVLoOTOhfBeGxJHDoiorNsdLOf5yrPnKKFqtQyynW1reYrI4XCCWiGoiwMU+5gwrw62H/XVTGvt1Vz9gQK1M4jsdKBDHU20J0JpVoCHOEM846/XN6zN3881uNUY8HDdYrsIGg9pLCJeDBJwoIZ0Ys7VQ0hRzKJ0nHWdqWk6rYQazJimn8cysa9JC6o3eGf25MpVwp+hGQ=
+  file: medocs*.deb
+  on:
+    skip_cleanup: true
+    repo: drxtun/medocs
+    tags: true
