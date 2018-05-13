@@ -139,9 +139,6 @@
    <property name="shortcut">
     <string>Alt+W</string>
    </property>
-   <property name="shortcutVisibleInContextMenu">
-    <bool>true</bool>
-   </property>
   </action>
   <action name="actionQuitter">
    <property name="text">
@@ -149,9 +146,6 @@
    </property>
    <property name="shortcut">
     <string>Alt+X</string>
-   </property>
-   <property name="shortcutVisibleInContextMenu">
-    <bool>true</bool>
    </property>
   </action>
  </widget>
