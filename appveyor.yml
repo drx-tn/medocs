@@ -1,11 +1,18 @@
-image: Visual Studio 2017
-
 branches:
-  except:
-    - gh-pages
-skip_tags: true
+  only:
+  - master
+skip_non_tags: true
 max_jobs: 1
+image: Visual Studio 2017
+init:
+- cmd: >-
+    call "%QTDIR%\bin\qtenv2.bat"
 
+    set PATH=C:\Qt\Tools\QtCreator\bin;%ProgramFiles(x86)%\NSIS\bin;%PATH%
+
+    call "%ProgramFiles(x86)%\%VS_FOLDER%\vcvarsall.bat" %platform%
+
+    cd /D "%APPVEYOR_BUILD_FOLDER%"
 environment:
   matrix:
   - QTDIR: C:\Qt\5.10.1\msvc2017_64
@@ -14,39 +21,30 @@ environment:
   - QTDIR: C:\Qt\5.10.1\msvc2015
     VS_FOLDER: Microsoft Visual Studio 14.0\VC
     PLATFORM: x86
-
-init:
-  - ps: >-
-      if ($env:APPVEYOR_REPO_TAG -eq "true")
-      {
-          Update-AppveyorBuild -Version "$($env:APPVEYOR_REPO_TAG_NAME.TrimStart("v"))"
-      }
-      else
-      {
-          Update-AppveyorBuild -Version "dev-$($env:APPVEYOR_REPO_COMMIT.Substring(0, 7))"
-      }
-  - call "%QTDIR%\bin\qtenv2.bat"
-  - set PATH=C:\Qt\Tools\QtCreator\bin;%ProgramFiles(x86)%\NSIS\bin;%PATH%
-  - call "%ProgramFiles(x86)%\%VS_FOLDER%\vcvarsall.bat" %platform%
-  - cd /D "%APPVEYOR_BUILD_FOLDER%"
-
 build_script:
-  - qmake -config release
-  - nmake
-  - nmake clean
-  - windeployqt --release --no-patchqt --no-quick-import --no-translations --no-compiler-runtime --no-webkit2 --no-angle --no-opengl-sw qt\release
-  - makensis medocs.nsi
-  - ren medocs.exe medocs-%APPVEYOR_BUILD_VERSION%_%PLATFORM%.exe
+- cmd: >-
+    qmake -config release
 
+    nmake
+
+    nmake clean
+
+    windeployqt --release --no-patchqt --no-quick-import --no-translations --no-compiler-runtime --no-webkit2 --no-angle --no-opengl-sw qt\release
+
+    makensis medocs.nsi
+
+    ren medocs.exe medocs-%appveyor_repo_tag_name%_%platform%.exe
+
+artifacts:
+- path: medocs-$(appveyor_repo_tag_name)_$(platform).exe
+  name: medocs.exe
 deploy:
-  release: medocs-v$(appveyor_build_version)
-  description: 'Release description'
-  provider: GitHub
+- provider: GitHub
+  tag: $(appveyor_repo_tag_name)
+  release: $(appveyor_repo_tag_name)
   auth_token:
-    secure: 3jlQQ2IKAi/MFj8OGqTwqMjJol+1uXGDMcOjMdceYGr2bssGvBwh8F+tOBY8ykGc
-  artifact: medocs-*.exe
-  draft: false
-  prerelease: false
+    secure: 169240EigOM77oZITQ+Qi4xA0C/T+fxdULAcBSWyyHk10ODOI9a8o6kE0Bt+Uxtn
+  artifact: medocs.exe
+  force_update: true
   on:
-    branch: master
     appveyor_repo_tag: true
