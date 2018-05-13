@@ -1,0 +1,14 @@
+Source: medocs
+Section: education
+Priority: optional
+Maintainer: DrX@TUN <drxtun@gmail.com>
+Build-Depends: debhelper (>= 10), qtdeclarative5-dev
+Standards-Version: 4.1.2
+Homepage: https://drxtun.github.io
+#Vcs-Git: https://github.com/drxtun/medocs.git
+
+Package: medocs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libqt5widgets5, libqt5gui5, libqt5sql5, libqt5core5a
+Description:   Application base de données des médicaments en Tunisie
+  Cette application permet au grand public et aux professionnels de santé d'accéder à des données sur les médicaments commercialisés ou ayant l'autorisation de mise sur le marché tunisien. C'est une application gratuite et son coude source est ouvert. (En savoir plus sur le projet: https://drxtun.github.io | Rapporter des bugs ou des erreurs: https://github.com/drxtun/medocs/issues)

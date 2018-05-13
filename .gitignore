@@ -7,6 +7,17 @@
 !/LICENSE
 !/medocs.pro
 !/medocs.nsi
+!/git2dch
+!/debian
+/debian/*
+!/debian/changelog
+!/debian/compat
+!/debian/control
+!/debian/copyright
+!/debian/rules
+!/debian/source
+/debian/source/*
+!/debian/source/format
 !/base
 /base/*
 !/base/dpm.db

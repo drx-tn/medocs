@@ -1,0 +1,11 @@
+medocs (0.1.1) unstable; urgency=low
+  * Correction d'erreurs sur Travis et Appveyor.
+  * Ajout du badge du statut du build Appveyor.
+  * Ajout du déploiement des programmes d'installation pour Windows (32 et 64 bits) via Appveyor.
+  * Ajout du déploiement du paquet debian par Travis pour les architectures amd64 et i386.
+  * Refactoring et ajout du script NSIS.
+  * fixes #1
+  * Initialisation du dépôt.
+
+ -- DrX@TUN <39054543+drxtun@users.noreply.github.com>  Sun, 13 May 2018 10:38:16 +0100
+

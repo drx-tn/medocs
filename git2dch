@@ -1,0 +1,17 @@
+#!/bin/bash
+# Ce script génère le changelog debian à partir des tags git.
+# Inspiré de: https://gist.github.com/nikicat/4653121
+
+sudo apt-get install -y moreutils git-buildpackage
+
+>debian/changelog
+prevtag="noprevtag"
+git tag -l | sort -V | while read tag; do
+    (printf "medocs (${tag}) unstable; urgency=low\n"; git log --pretty=format:'  * %s' `if [ "$prevtag" == "noprevtag" ]; then echo $tag; else echo $prevtag..$tag; fi`; git log --pretty='format:%n%n -- %aN <%aE>  %aD%n%n' $tag^..$tag) | cat - debian/changelog | sponge debian/changelog
+        prevtag=$tag
+done
+
+tag=`git tag -l | sort -V | tail -1`
+[ `git log --exit-code $tag..HEAD | wc -l` -ne 0 ] && git-dch -s $tag -S --no-multimaint --nmu --ignore-branch --snapshot-number="'{:%Y%m%d%H%M%S}'.format(__import__('datetime').datetime.fromtimestamp(`git log -1 --pretty=format:%at`))"
+
+sed -i 's/UNRELEASED/unstable/' debian/changelog
