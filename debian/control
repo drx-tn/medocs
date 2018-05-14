@@ -1,7 +1,7 @@
 Source: medocs
 Section: education
 Priority: optional
-Maintainer: DrX@TUN <drxtun@gmail.com>
+Maintainer: DrX@TUN <39054543+drxtun@users.noreply.github.com>
 Build-Depends: debhelper, qt5-default, qtdeclarative5-dev
 Standards-Version: 4.1.2
 Homepage: https://drxtun.github.io
