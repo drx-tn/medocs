@@ -1,6 +1,6 @@
 # Médocs [![Launchpad.net](http://media.launchpad.net/lp-badge-kit/launchpad-badge-w120px.png)](https://launchpad.net/medocs) [![Build Status](https://travis-ci.org/drxtun/medocs.svg?branch=master)](https://travis-ci.org/drxtun/medocs) [![Build status](https://ci.appveyor.com/api/projects/status/9auqcy32ae4uvy5c?svg=true)](https://ci.appveyor.com/project/drxtun61291/medocs)
 ## A propos
-Cette application permet au grand public et aux professionnels de santé d'accéder à des données sur les médicaments commercialisés ou ayant l'autorisation de mise sur le marché tunisien. C'est une application gratuite et son coude source est ouvert (voir [licence GPL-3](LICENSE.md)).
+Cette application permet au grand public et aux professionnels de santé d'accéder à des données sur les médicaments commercialisés ou ayant l'autorisation de mise sur le marché tunisien. C'est une application gratuite et son coude source est ouvert (voir [licence GPL-3](LICENSE)).
 > En savoir plus sur le projet: https://drxtun.github.io
 > Rapporter des bugs ou des erreurs: https://github.com/drxtun/medocs/issues
 
