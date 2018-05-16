@@ -1,6 +1,6 @@
 ﻿Name "Médocs"
 LoadLanguageFile "${NSISDIR}\Contrib\Language files\French.nlf"
-OutFile "medocs.exe"
+OutFile "medocs-${VERSION}_${PLATFORM}.exe"
 # Unicode true
 SetCompress force
 SetCompressor /FINAL /SOLID lzma

@@ -31,9 +31,7 @@ build_script:
 
     windeployqt --release --no-patchqt --no-quick-import --no-translations --no-compiler-runtime --no-webkit2 --no-angle --no-opengl-sw qt\release
 
-    makensis medocs.nsi
-
-    ren medocs.exe medocs-%appveyor_repo_tag_name%_%platform%.exe
+    makensis /DVERSION=%appveyor_repo_tag_name% /DPLATFORM=%platform% medocs.nsi
 
 artifacts:
 - path: medocs-$(appveyor_repo_tag_name)_$(platform).exe
