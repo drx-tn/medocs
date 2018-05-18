@@ -1,3 +1,6 @@
+branches:
+  only:
+  - /^[0-9]/
 matrix:
   include:
     - language: android
@@ -48,5 +51,17 @@ matrix:
       script:
         - make
         - macdeployqt qt/medocs.app -dmg
+      deploy:
+        provider: releases
+        api_key:
+          secure: Jmm6VplNt8+oFKHPe/wI7JQ/sp4ziBOyFeMtQjVgbbbyCz6g9eCjlFKDzATYgEsHCS4n6XRN/JB18fOBi1MUCY3xBfcH4Pc2DTIdhEDRAUnIw2RwxVFPRsm3YfBpAkpDfomDsrA3n53+Hpg/w68VT0xZvIiE0rIZ9nRy9OtvtY0EviZdNuRsvUo//S4lJtahueboOyYuvimbwjBuLedC5x23a4sDrkqanT+BSdVDJwvMpDJ9K1NMQEQ+kSrWne17Z5mPq6UIPLsmDXUS620pdfTKD2JsyBxYOpeG24yUThiyL/UPFBDCL2CdIvZWKNti2BvsZJBu7uEQ7OLKePglyZ/Dv1wdpjD9zuGcKt1pNpCdwbokZArXlc7XPi6SF1Ip0KrxKJew4OpY3DV5QdaYPOuMC77N61oz9vUwdnKLwQB6IYAGblDDwtBdRC+OKm9xUYiSXGjjSuk7hw9+tprIRjm/pbIGULPQ511eJhc2I8UUzJwbn5F4caOcfqBvx9a7QncdTKLQAw38gZECvipOo8MY2q0p81YgoV9R1dGg3Aoqv5h2Zrcu6hYhjaJNvmuOSqIKgdQnYUiZq9yNYJp/rTzSwZdj3iZjqK2rUR4hDCgTohyWVSmlDV79sxps458a6R+wfjr8LfsfTocs7z4LVUb1rCacg5CuD9SbpCnm7GY=
+        file: medocs.dmg
+        name: ${TRAVIS_BRANCH}
+        draft: false
+        prerelease: false
+        skip_cleanup: true
+        on:
+          repo: drxtun/medocs
+          tags: true
 notifications:
   email: false
