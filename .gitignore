@@ -10,6 +10,14 @@
 !/git2dch
 !/settings.gradle
 !/build.gradle
+!/gradlew
+!/gradlew.bat
+!/gradle
+/gradle/*
+!/gradle/wrapper
+/gradle/wrapper/*
+!/gradle/wrapper/gradle-wrapper.jar
+!/gradle/wrapper/gradle-wrapper.properties
 !/debian
 /debian/*
 !/debian/changelog

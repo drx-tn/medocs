@@ -79,11 +79,11 @@ Pour déployer l'image d'installation il suffit d'utiliser `macdeployqt`:
 
 > Cette application est encore en développement.
 
-A partir d'Android Studio ou en ligne de commande avec `gradle`:
+A partir d'Android Studio ou en ligne de commande avec `gradlew`:
+Sous windows:
 
-    gradle assembleRelease
+    gradlew.bat assembleRelease
 
-ou bien encore:
+Sous Linux ou Mac:
 
-    gradle wrapper
     ./gradlew assembleRelease
