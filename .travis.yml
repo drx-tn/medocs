@@ -1,56 +1,49 @@
-branches:
-  only:
-  - /^[0-9]/
+matrix:
+  include:
+    - language: android
+      dist: trusty
+      jdk:
+          - oraclejdk8
+      sudo: false
+      android:
+        components:
+          - build-tools-27.0.3
+          - android-23
+          - extra-android-m2repository
+      notifications:
+        email: false
+      script:
+        gradle assembleRelease
+      cache:
+        directories:
+        - $HOME/.m2
+        - $HOME/.gradle/caches/
+        - $HOME/.gradle/wrapper/
+      install: true
+      deploy:
+        provider: releases
+        api_key:
+          secure: Jmm6VplNt8+oFKHPe/wI7JQ/sp4ziBOyFeMtQjVgbbbyCz6g9eCjlFKDzATYgEsHCS4n6XRN/JB18fOBi1MUCY3xBfcH4Pc2DTIdhEDRAUnIw2RwxVFPRsm3YfBpAkpDfomDsrA3n53+Hpg/w68VT0xZvIiE0rIZ9nRy9OtvtY0EviZdNuRsvUo//S4lJtahueboOyYuvimbwjBuLedC5x23a4sDrkqanT+BSdVDJwvMpDJ9K1NMQEQ+kSrWne17Z5mPq6UIPLsmDXUS620pdfTKD2JsyBxYOpeG24yUThiyL/UPFBDCL2CdIvZWKNti2BvsZJBu7uEQ7OLKePglyZ/Dv1wdpjD9zuGcKt1pNpCdwbokZArXlc7XPi6SF1Ip0KrxKJew4OpY3DV5QdaYPOuMC77N61oz9vUwdnKLwQB6IYAGblDDwtBdRC+OKm9xUYiSXGjjSuk7hw9+tprIRjm/pbIGULPQ511eJhc2I8UUzJwbn5F4caOcfqBvx9a7QncdTKLQAw38gZECvipOo8MY2q0p81YgoV9R1dGg3Aoqv5h2Zrcu6hYhjaJNvmuOSqIKgdQnYUiZq9yNYJp/rTzSwZdj3iZjqK2rUR4hDCgTohyWVSmlDV79sxps458a6R+wfjr8LfsfTocs7z4LVUb1rCacg5CuD9SbpCnm7GY=
+        file: android/build/outputs/apk/release/medocs-${TRAVIS_BRANCH}-release-unsigned.apk
+        name: ${TRAVIS_BRANCH}
+        draft: false
+        prerelease: false
+        skip_cleanup: true
+        on:
+          repo: drxtun/medocs
+          tags: true
+    - language: c++
+      compiler: gcc
+      os: osx
+      before_install:
+        - brew update
+      install:
+        - brew install cppcheck qt@5.10
+        - brew link --force qt@5.10
+      before_script:
+        - export QMAKESPEC=macx-g++
+        - qmake -config release
+      script:
+        - make
+        - macployqt qt/medocs.app -dmg
 
-language: cpp
-compiler: g++
-sudo: require
-dist: trusty
-
-env:
-  global:
-  - UBUNTU_VERSION=trusty
-  - QT_VERSION=5.10.1
-  - QT_BASE=510
-  matrix:
-  - ARCH=amd64
-  - ARCH=i386
-before_install:
-- sudo apt-get update -qq
-- sudo apt-get install sbuild debootstrap -qq
-- sudo rm -rf /etc/sbuild/chroot/*-sbuild /etc/schroot/chroot.d/*-sbuild*
-install:
-- sudo debootstrap --foreign --no-check-gpg --arch=${ARCH} ${UBUNTU_VERSION} /tmp/medocs_build
-  http://archive.ubuntu.com/ubuntu
-- sudo chroot /tmp/medocs_build ./debootstrap/debootstrap --second-stage
-- sudo sbuild-createchroot --arch=${ARCH} --foreign --setup-only ${UBUNTU_VERSION}
-  /tmp/medocs_build http://archive.ubuntu.com/ubuntu
-- sudo chroot /tmp/medocs_build apt-get update -qq
-- sudo chroot /tmp/medocs_build apt-get install software-properties-common -qq
-- sudo chroot /tmp/medocs_build add-apt-repository -y ppa:beineri/opt-qt-${QT_VERSION}-${UBUNTU_VERSION}
-- sudo chroot /tmp/medocs_build add-apt-repository -y universe
-- sudo chroot /tmp/medocs_build apt-get update -qq
-- sudo chroot /tmp/medocs_build apt-get install qt${QT_BASE}base checkinstall libx11-xcb-dev
-  libglu1-mesa-dev -qq
-- sudo mkdir -p /tmp/medocs_build/${TRAVIS_BUILD_DIR}
-- sudo rsync -av ${TRAVIS_BUILD_DIR}/ /tmp/medocs_build/${TRAVIS_BUILD_DIR}
-script:
-- |
-  sudo chroot /tmp/medocs_build /bin/bash -c "source /opt/qt510/bin/qt510-env.sh && cd ${TRAVIS_BUILD_DIR} && qmake -config release && make && cat >description-pak <<EOF && checkinstall --install=no --maintainer=\"39054543+drxtun@users.noreply.github.com\" --arch=${ARCH} --type=debian --pkgname=medocs --pkgversion=${TRAVIS_BRANCH} --pkgrelease=${TRAVIS_BRANCH} --pkglicense=\"GPL3\" --pkggroup=education --pkgsource=https://github.com/drxtun/medocs --requires=libqt5widgets5,libqt5gui5,libqt5sql5,libqt5core5a --provides=medocs --nodoc -d 0 --default
-  Application base de données des médicaments en Tunisie
-
-  Cette application permet au grand public et aux professionnels de santé d'accéder à des données sur les médicaments commercialisés ou ayant l'autorisation de mise sur le marché tunisien. C'est une application gratuite et son coude source est ouvert. (En savoir plus sur le projet: https://drxtun.github.io | Rapporter des bugs ou des erreurs: https://github.com/drxtun/medocs/issues)
-  EOF"
-- rsync -av /tmp/medocs_build/${TRAVIS_BUILD_DIR}/ ${TRAVIS_BUILD_DIR}
-deploy:
-  provider: releases
-  api_key:
-    secure: Jmm6VplNt8+oFKHPe/wI7JQ/sp4ziBOyFeMtQjVgbbbyCz6g9eCjlFKDzATYgEsHCS4n6XRN/JB18fOBi1MUCY3xBfcH4Pc2DTIdhEDRAUnIw2RwxVFPRsm3YfBpAkpDfomDsrA3n53+Hpg/w68VT0xZvIiE0rIZ9nRy9OtvtY0EviZdNuRsvUo//S4lJtahueboOyYuvimbwjBuLedC5x23a4sDrkqanT+BSdVDJwvMpDJ9K1NMQEQ+kSrWne17Z5mPq6UIPLsmDXUS620pdfTKD2JsyBxYOpeG24yUThiyL/UPFBDCL2CdIvZWKNti2BvsZJBu7uEQ7OLKePglyZ/Dv1wdpjD9zuGcKt1pNpCdwbokZArXlc7XPi6SF1Ip0KrxKJew4OpY3DV5QdaYPOuMC77N61oz9vUwdnKLwQB6IYAGblDDwtBdRC+OKm9xUYiSXGjjSuk7hw9+tprIRjm/pbIGULPQ511eJhc2I8UUzJwbn5F4caOcfqBvx9a7QncdTKLQAw38gZECvipOo8MY2q0p81YgoV9R1dGg3Aoqv5h2Zrcu6hYhjaJNvmuOSqIKgdQnYUiZq9yNYJp/rTzSwZdj3iZjqK2rUR4hDCgTohyWVSmlDV79sxps458a6R+wfjr8LfsfTocs7z4LVUb1rCacg5CuD9SbpCnm7GY=
-  file: medocs_${TRAVIS_BRANCH}-${TRAVIS_BRANCH}_${ARCH}.deb
-  name: ${TRAVIS_BRANCH}
-  draft: false
-  prerelease: false
-  skip_cleanup: true
-  on:
-    repo: drxtun/medocs
-    tags: true
