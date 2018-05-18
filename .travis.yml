@@ -3,16 +3,19 @@ matrix:
     - language: android
       jdk:
           - oraclejdk8
-      sudo: false
+      sudo: true
+      addons:
+        apt:
+          packages:
+            - oracle-java8-installer
       android:
         components:
           - build-tools-27.0.3
           - android-23
           - extra-android-m2repository
-      notifications:
-        email: false
       script:
-        gradle assembleRelease
+        - jdk_switcher use oraclejdk8
+        - gradle assembleRelease
       cache:
         directories:
         - $HOME/.m2
@@ -32,7 +35,7 @@ matrix:
           repo: drxtun/medocs
           tags: true
     - language: c++
-      compiler: g++
+      compiler: clang
       os: osx
       before_install:
         - brew update
@@ -40,9 +43,10 @@ matrix:
         - brew install cppcheck qt@5.10
         - brew link --force qt@5.10
       before_script:
-        - export QMAKESPEC=macx-g++
+        - export QMAKESPEC=macx-clang
         - qmake -config release
       script:
         - make
         - macployqt qt/medocs.app -dmg
-
+notifications:
+  email: false
