@@ -58,7 +58,7 @@ Pour compiler le programme d'installation il faudra tout d'abord nettoyer le dos
     nmake clean           # Commande à utiliser si vous utilisez MSVC
                           # ou autre si vous utilisez un autre environnement.
 
-puis compiler le script NSIS avec
+puis compiler le script NSIS avec:
 
     makensis VERSION ARCHITECTURE medocs.nsi       # vous pouvez mettre ou pas ces 2 variables.
 
@@ -73,7 +73,7 @@ A partir de Qt Creator ou en ligne de commande avec:
 
 Pour déployer l'image d'installation il suffit d'utiliser `macdeployqt`:
 
-    macdeployqt medocs.app -dmg
+    macdeployqt qt/medocs.app -dmg
 
 ### Compilation de l'application Android
 
@@ -81,6 +81,9 @@ Pour déployer l'image d'installation il suffit d'utiliser `macdeployqt`:
 
 A partir d'Android Studio ou en ligne de commande avec `gradle`:
 
-    gradle build
+    gradle assembleRelease
 
+ou bien encore:
 
+    gradle wrapper
+    ./gradlew assembleRelease

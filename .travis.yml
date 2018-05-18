@@ -1,7 +1,6 @@
 matrix:
   include:
     - language: android
-      dist: trusty
       jdk:
           - oraclejdk8
       sudo: false
@@ -33,7 +32,7 @@ matrix:
           repo: drxtun/medocs
           tags: true
     - language: c++
-      compiler: gcc
+      compiler: g++
       os: osx
       before_install:
         - brew update
