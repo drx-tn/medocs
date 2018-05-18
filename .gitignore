@@ -25,7 +25,7 @@
 !/base/dpm.db
 !/qt
 /qt/*
-!/qt/
+!/qt/icon.icns
 !/qt/aboutdialog.cpp
 !/qt/aboutdialog.h
 !/qt/aboutdialog.ui
@@ -46,9 +46,6 @@
 /qt/linux/*
 !/qt/linux/medocs.desktop
 !/qt/linux/medocs.png
-!/qt/mac
-/qt/mac/*
-!/qt/mac/medocs.icns
 !/android
 /android/*
 !/android/build.gradle

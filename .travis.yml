@@ -1,9 +1,8 @@
 matrix:
   include:
     - language: android
-      jdk:
-          - oraclejdk8
-      sudo: true
+      jdk: oraclejdk8
+      sudo: false
       addons:
         apt:
           packages:

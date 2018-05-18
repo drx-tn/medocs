@@ -24,6 +24,4 @@ unix:!macx {
 	INSTALLS += base
 }
 
-macx: {
-	ICON = macx/medocs.icns
-}
+macx:ICON=icon.icns
