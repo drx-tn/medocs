@@ -3,6 +3,7 @@
 ## A propos
 Cette application permet au grand public et aux professionnels de santé d'accéder à des données sur les médicaments commercialisés ou ayant l'autorisation de mise sur le marché tunisien. C'est une application gratuite et son code source est ouvert (voir [licence GPL-3](LICENSE)).
 > En savoir plus sur le projet: https://drxtun.github.io
+> 
 > Rapporter des bugs ou des erreurs: https://github.com/drxtun/medocs/issues
 
 ## Installation

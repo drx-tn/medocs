@@ -47,6 +47,6 @@ matrix:
         - qmake -config release
       script:
         - make
-        - macdeployqt medocs.app -dmg
+        - macdeployqt qt/medocs.app -dmg
 notifications:
   email: false
