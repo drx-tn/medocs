@@ -1,7 +1,7 @@
 # Médocs [![Launchpad.net !](http://media.launchpad.net/lp-badge-kit/launchpad-badge-w120px.png)](https://launchpad.net/medocs)
 [![Licence](https://img.shields.io/github/license/drxtun/medocs.svg)](LICENSE) [![Etat du build sur Travis](https://travis-ci.org/drxtun/medocs.svg?branch=master)](https://travis-ci.org/drxtun/medocs) [![Etat du build sur Appveyor](https://ci.appveyor.com/api/projects/status/9auqcy32ae4uvy5c?svg=true)](https://ci.appveyor.com/project/drxtun61291/medocs) [![Dernière version](https://img.shields.io/github/release/drxtun/medocs.svg)](https://github.com/drxtun/medocs/releases/latest) [![Nombre de téléchargements](https://img.shields.io/github/downloads/drxtun/medocs/total.svg)](https://github.com/drxtun/medocs/releases)
 ## A propos
-Cette application permet au grand public et aux professionnels de santé d'accéder à des données sur les médicaments commercialisés ou ayant l'autorisation de mise sur le marché tunisien. C'est une application gratuite et son coude source est ouvert (voir [licence GPL-3](LICENSE)).
+Cette application permet au grand public et aux professionnels de santé d'accéder à des données sur les médicaments commercialisés ou ayant l'autorisation de mise sur le marché tunisien. C'est une application gratuite et son code source est ouvert (voir [licence GPL-3](LICENSE)).
 > En savoir plus sur le projet: https://drxtun.github.io
 > Rapporter des bugs ou des erreurs: https://github.com/drxtun/medocs/issues
 
@@ -80,6 +80,7 @@ Pour déployer l'image d'installation il suffit d'utiliser `macdeployqt`:
 > Cette application est encore en développement.
 
 A partir d'Android Studio ou en ligne de commande avec `gradlew`:
+
 Sous windows:
 
     gradlew.bat assembleRelease

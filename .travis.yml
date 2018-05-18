@@ -10,6 +10,7 @@ matrix:
       android:
         components:
           - build-tools-27.0.3
+          - android-27
           - android-23
           - extra-android-m2repository
       script:
@@ -46,6 +47,6 @@ matrix:
         - qmake -config release
       script:
         - make
-        - macployqt medocs.app -dmg
+        - macdeployqt medocs.app -dmg
 notifications:
   email: false
