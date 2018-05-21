@@ -2,10 +2,11 @@ def versionMajor = 0
 def versionMinor = 1
 def versionBase = 1
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 27
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 15
         targetSdkVersion 27
         applicationId "tn.drx.medocs"
         versionCode versionMajor * 10000 + versionMinor * 100 + versionBase
@@ -27,4 +28,10 @@ android {
             useProguard false
         }
     }
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }

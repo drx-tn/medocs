@@ -14,7 +14,7 @@
    <enum>Qt::DefaultContextMenu</enum>
   </property>
   <property name="windowTitle">
-   <string>DPM base</string>
+   <string>Médocs</string>
   </property>
   <property name="windowIcon">
    <iconset resource="medocs.qrc">
