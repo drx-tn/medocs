@@ -9,5 +9,5 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui->blablabla->setOpenExternalLinks(true);
     ui->blablabla->setHtml("<center><p><h3>Médocs</h3></b>\
 <p>Pour en savoir plus sur cette application et rechercher des mises-à-jours de la base de données:\
-<center><a href=\"https://drxtun.github.io\" target=\"_blank\">https://drxtun.github.io</a></center></p>");
+<center><a href=\"https://drx-tn.github.io\" target=\"_blank\">https://drx-tn.github.io</a></center></p>");
 }

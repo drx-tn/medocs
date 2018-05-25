@@ -39,7 +39,7 @@ InstProgressFlags colored
 ShowInstDetails show
 ShowUninstDetails show
 VIAddVersionKey /LANG=${LANG_FRENCH} "ProductName" "Médocs"
-VIAddVersionKey /LANG=${LANG_FRENCH} "CompanyName" "DrX@TUN"
+VIAddVersionKey /LANG=${LANG_FRENCH} "CompanyName" "DrX@TN"
 VIAddVersionKey /LANG=${LANG_FRENCH} "FileDescription" "Application base de données des médicaments en Tunisie"
 VIAddVersionKey /LANG=${LANG_FRENCH} "LegalCopyright" "No Copyright"
 VIAddVersionKey /LANG=${LANG_FRENCH} "FileVersion" "0.1.1"

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="tn.DrX.medocs">
-	<application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+	<application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:allowBackup="true">
 		<activity android:label="@string/app_name" android:name="tn.DrX.medocs.MedocsActivity" android:theme="@android:style/Theme.NoTitleBar">
 			<intent-filter >
 				<action android:name="android.intent.action.MAIN" />

@@ -1,13 +1,13 @@
 # Médocs [![Launchpad.net !](http://media.launchpad.net/lp-badge-kit/launchpad-badge-w120px.png)](https://launchpad.net/medocs)
-[![Licence](https://img.shields.io/github/license/drxtun/medocs.svg)](LICENSE) [![Etat du build sur Travis](https://travis-ci.org/drxtun/medocs.svg?branch=master)](https://travis-ci.org/drxtun/medocs) [![Etat du build sur Appveyor](https://ci.appveyor.com/api/projects/status/9auqcy32ae4uvy5c?svg=true)](https://ci.appveyor.com/project/drxtun61291/medocs) [![Dernière version](https://img.shields.io/github/release/drxtun/medocs.svg)](https://github.com/drxtun/medocs/releases/latest) [![Nombre de téléchargements](https://img.shields.io/github/downloads/drxtun/medocs/total.svg)](https://github.com/drxtun/medocs/releases)
+[![Licence](https://img.shields.io/github/license/drx-tn/medocs.svg)](LICENSE) [![Etat du build sur Travis](https://travis-ci.org/drx-tn/medocs.svg?branch=master)](https://travis-ci.org/drx-tn/medocs) [![Etat du build sur Appveyor](https://ci.appveyor.com/api/projects/status/9auqcy32ae4uvy5c?svg=true)](https://ci.appveyor.com/project/drxtun61291/medocs) [![Dernière version](https://img.shields.io/github/release/drx-tn/medocs.svg)](https://github.com/drx-tn/medocs/releases/latest) [![Nombre de téléchargements](https://img.shields.io/github/downloads/drx-tn/medocs/total.svg)](https://github.com/drx-tn/medocs/releases)
 ## A propos
 Cette application permet au grand public et aux professionnels de santé d'accéder à des données sur les médicaments commercialisés ou ayant l'autorisation de mise sur le marché tunisien. C'est une application gratuite et son code source est ouvert (voir [licence GPL-3](LICENSE)).
-> En savoir plus sur le projet: https://drxtun.github.io
+> En savoir plus sur le projet: https://drx-tn.github.io
 > 
-> Rapporter des bugs ou des erreurs: https://github.com/drxtun/medocs/issues
+> Rapporter des bugs ou des erreurs: https://github.com/drx-tn/medocs/issues
 
 ## Installation
-Vous retrouverez des programmes d'installation en téléchargement pour Windows 32 bits (`medocs*_x86.exe`) et 64 bits (`medocs*_x64.exe`) sur la page [releases](https://github.com/drxtun/medocs/releases).
+Vous retrouverez des programmes d'installation en téléchargement pour Windows 32 bits (`medocs*_x86.exe`) et 64 bits (`medocs*_x64.exe`) sur la page [releases](https://github.com/drx-tn/medocs/releases).
 
 Sous Ubuntu Trusty, Xenial, Artful, Bionic et Cosmic vous pouvez installer l'application en ajoutant le ppa [ppa:drx.tn/ppa](https://launchpad.net/~drx.tn/+archive/ubuntu/ppa) à vos sources de mises-à-jour puis en l'installant avec ces commandes:
 
@@ -22,7 +22,7 @@ Pour les autres versions de linux vous devez compiler l'application par vous mê
 
 La première étape consiste à cloner ce dépôt et à se diriger à l'intérieur du dossier `medocs`:
 
-    git clone https://github.com/drxtun/medocs
+    git clone https://github.com/drx-tn/medocs
     cd medocs
 
 ### Sous Linux
