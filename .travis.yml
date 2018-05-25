@@ -27,6 +27,7 @@ matrix:
           - $HOME/.gradle/caches/
           - $HOME/.gradle/wrapper/
           - $HOME/.android/build-cache
+      install: true
       before_deploy:
         - zipalign -v -p 4 android/build/outputs/apk/release/medocs-${TRAVIS_BRANCH}-release-unsigned.apk medocs-${TRAVIS_BRANCH}-release-unsigned-aligned.apk
         - keytool -genkey -alias medocs -keyalg RSA -keysize 2048 -keystore keystore.jks -dname "CN=Dr X, OU=Médocs, O=DrX.tn, L=Sousse, S=Sousse, C=TN" -storepass ${BIG_SECRET} -keypass ${BIG_SECRET}
