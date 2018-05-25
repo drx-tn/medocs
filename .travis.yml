@@ -35,16 +35,18 @@ matrix:
         prerelease: false
         skip_cleanup: true
         on:
-          repo: drxtun/medocs
+          repo: drx-tn/medocs
+          branch: master
           tags: true
     - language: c++
       compiler: clang
       os: osx
+      osx_image: xcode9.3
       before_install:
         - brew update
       install:
-        - brew install cppcheck qt@5.10
-        - brew link --force qt@5.10
+        - brew install cppcheck qt
+        - brew link --force qt
       before_script:
         - export QMAKESPEC=macx-clang
         - qmake -config release
@@ -63,6 +65,7 @@ matrix:
         skip_cleanup: true
         on:
           branch: master
+          repo: drx-tn/medocs
           tags: true
 notifications:
   email: false
