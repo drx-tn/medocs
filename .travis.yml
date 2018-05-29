@@ -1,6 +1,6 @@
-# branches:
-#   only:
-#   - /^[0-9]/
+branches:
+  only:
+    - master
 matrix:
   include:
     - language: android
