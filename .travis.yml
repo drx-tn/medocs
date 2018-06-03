@@ -1,6 +1,3 @@
-branches:
-  only:
-    - master
 matrix:
   include:
     - language: android
@@ -29,9 +26,9 @@ matrix:
           - $HOME/.android/build-cache
       install: true
       before_deploy:
-        - zipalign -v -p 4 android/build/outputs/apk/release/medocs-${TRAVIS_BRANCH}-release-unsigned.apk medocs-${TRAVIS_BRANCH}-release-unsigned-aligned.apk
+        - ${ANDROID_HOME}/build-tools/27.0.3/zipalign -v -p 4 android/build/outputs/apk/release/medocs-${TRAVIS_BRANCH}-release-unsigned.apk medocs-${TRAVIS_BRANCH}-release-unsigned-aligned.apk
         - keytool -genkey -alias medocs -keyalg RSA -keysize 2048 -keystore keystore.jks -dname "CN=Dr X, OU=Médocs, O=DrX.tn, L=Sousse, S=Sousse, C=TN" -storepass ${BIG_SECRET} -keypass ${BIG_SECRET}
-        - apksigner sign --ks keystore.jks --ks-pass pass:${BIG_SECRET} --ks-key-alias medocs --key-pass pass:${BIG_SECRET} --out medocs-${TRAVIS_BRANCH}.apk medocs-${TRAVIS_BRANCH}-release-unsigned-aligned.apk
+        - ${ANDROID_HOME}/build-tools/27.0.3/apksigner sign --ks keystore.jks --ks-pass pass:${BIG_SECRET} --ks-key-alias medocs --key-pass pass:${BIG_SECRET} --out medocs-${TRAVIS_BRANCH}.apk medocs-${TRAVIS_BRANCH}-release-unsigned-aligned.apk
       deploy:
         provider: releases
         api_key:
@@ -71,7 +68,6 @@ matrix:
         prerelease: false
         skip_cleanup: true
         on:
-          branch: master
           repo: drx-tn/medocs
           tags: true
 notifications:
