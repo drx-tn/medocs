@@ -1,5 +1,8 @@
 # Médocs [![Launchpad.net !](http://media.launchpad.net/lp-badge-kit/launchpad-badge-w120px.png)](https://launchpad.net/medocs)
 [![Licence](https://img.shields.io/github/license/drx-tn/medocs.svg)](LICENSE) [![Etat du build sur Travis](https://travis-ci.org/drx-tn/medocs.svg?branch=master)](https://travis-ci.org/drx-tn/medocs) [![Etat du build sur Appveyor](https://ci.appveyor.com/api/projects/status/usg9qx1bejcilxce/branch/master?svg=true)](https://ci.appveyor.com/project/drxtun61291/medocs/branch/master) [![Dernière version](https://img.shields.io/github/release/drx-tn/medocs.svg)](https://github.com/drx-tn/medocs/releases/latest) [![Nombre de téléchargements](https://img.shields.io/github/downloads/drx-tn/medocs/total.svg)](https://github.com/drx-tn/medocs/releases)
+
+<p align="center"><img src="medocs.svg" width="300"/></p>
+
 ## A propos
 Cette application permet au grand public et aux professionnels de santé d'accéder à des données sur les médicaments commercialisés ou ayant l'autorisation de mise sur le marché tunisien. C'est une application gratuite et son code source est ouvert (voir [licence GPL-3](LICENSE)).
 > En savoir plus sur le projet: https://drx-tn.github.io

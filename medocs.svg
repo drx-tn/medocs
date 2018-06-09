@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg enable-background="new 0 0 38.1 38.1" version="1.1" viewBox="0 0 38.1 38.1" xmlns="http://www.w3.org/2000/svg">
+ <style type="text/css">.st0{fill:#00A5CB;} .st1{fill:#0190B0;} .st2{fill:#FFFFFF;} .st3{fill:#F2F2F2;}</style>
+ <path class="st0" d="M19.1,37.8C8.7,37.8,0.3,29.4,0.3,19S8.7,0.1,19.1,0.1"/>
+ <path class="st1" d="M19,0.1c10.4,0,18.8,8.4,18.8,18.8S29.4,37.8,19,37.8"/>
+ <path class="st2" d="m14.3 14.5l-5.4 5.4c-2.4 2.4-2.4 6.4 0 8.8s6.4 2.4 8.8 0l5.4-5.4-8.8-8.8z"/>
+ <path class="st2" d="m28.4 9.2c-2.4-2.4-6.4-2.4-8.8 0l-4.6 4.6 8.8 8.8 4.5-4.5c2.5-2.5 2.5-6.4 0.1-8.9z"/>
+</svg>
