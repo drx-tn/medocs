@@ -3,6 +3,13 @@
 
 <p align="center"><img src="medocs.svg" width="300"/></p>
 
+> **Mise en garde importante**
+> 
+> Médocs n'est plus maintenue à partir du 17/06/2019 vue qu'il n'y a pour le moment pas de mise-à-jour de sa base de données; son utilisation n'est par conséquent pas recommandée.
+
+</div>
+</div>
+
 ## A propos
 Cette application permet au grand public et aux professionnels de santé d'accéder à des données sur les médicaments commercialisés ou ayant l'autorisation de mise sur le marché tunisien. C'est une application gratuite et son code source est ouvert (voir [licence GPL-3](LICENSE)).
 > En savoir plus sur le projet: https://drx-tn.github.io
